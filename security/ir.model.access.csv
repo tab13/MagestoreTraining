@@ -1,0 +1,20 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+course_manager,course manager,model_magestoretraining_training,group_manager,1,1,1,1
+mentor_manager,mentor manager,model_magestoretraining_mentor,group_manager,1,1,1,1
+trainee_manager,trainee manager,model_magestoretraining_trainee,group_manager,1,1,1,1
+contract_manager,contract manager,model_magestoretraining_contract,group_manager,1,1,1,1
+mission_manager,mission manager,model_magestoretraining_mission,group_manager,1,1,1,1
+task_manager,task manager,model_magestoretraining_task,group_manager,1,1,1,1
+document_manager,document manager,model_magestoretraining_document,group_manager,1,1,1,1
+course_mentor,course mentor,model_magestoretraining_training,group_mentor,1,1,0,0
+mentor_mentor,mentor mentor,model_magestoretraining_mentor,group_mentor,1,0,0,0
+trainee_mentor,trainee mentor,model_magestoretraining_trainee,group_mentor,1,0,0,0
+mission_mentor,mission mentor,model_magestoretraining_mission,group_mentor,1,1,1,1
+task_mentor,task mentor,model_magestoretraining_task,group_mentor,1,1,1,1
+document_mentor,document mentor,model_magestoretraining_document,group_mentor,1,1,0,0
+course_trainee,course trainee,model_magestoretraining_training,group_trainee,1,0,0,0
+mentor_trainee,mentor trainee,model_magestoretraining_mentor,group_trainee,1,0,0,0
+trainee_trainee,trainee trainee,model_magestoretraining_trainee,group_trainee,1,0,0,0
+mission_trainee,mission trainee,model_magestoretraining_mission,group_trainee,1,0,0,0
+task_trainee,task trainee,model_magestoretraining_task,group_trainee,1,0,0,0
+document_trainee,document trainee,model_magestoretraining_document,group_trainee,1,1,0,0

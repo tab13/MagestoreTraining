@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="act_trainee_2_contract" model="ir.actions.act_window">
+        <field name="name">Contracts</field>
+        <field name="res_model">magestoretraining.contract</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_trainee_id': [active_id], 'default_trainee_id': active_id}</field>
+    </record>
+
+    <record id="trainee_form_view2" model="ir.ui.view">
+        <field name="name">trainee.form.view2</field>
+        <field name="model">magestoretraining.trainee</field>
+        <field name="inherit_id" ref="trainee_form_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(act_trainee_2_contract)d"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        type="action">
+                        <field name="contracts_count" widget="statinfo" string="Contracts"/>
+                    </button>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="trainee_contract_view_search" model="ir.ui.view">
+        <field name="name">trainee.contract.search</field>
+        <field name="model">magestoretraining.contract</field>
+        <field name="arch" type="xml">
+            <search string="Search Contract">
+                <field name="name" string="Contracts"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="working_hours"/>
+                <field name="trainee_id"/>
+                <field name="trainer_id"/>
+                <field name="training_about"/>
+                <field name="state"/>
+                <filter string="To Renew" name="to_renew" domain="[('state', '=', 'pending')]"/>
+                <separator />
+                <filter string="Current trainee" name="current_trainee" domain="[('trainee_id.active','=',True)]"/>
+                <separator/>
+                <filter string="Important Messages" name="message_needaction" domain="[('message_needaction','=',True)]"/>
+                <!--<group expand="0" string="Group By">
+                    <filter string="Trainee" domain="[]" context="{'group_by':'trainee_id'}"/>
+                    <filter string="Job" domain="[]" context="{'group_by':'job_id'}"/>
+                    <filter string="Contract Type" domain="[]" context="{'group_by':'type_id'}"/>
+                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="trainee_contract_view_form" model="ir.ui.view">
+        <field name="name">trainee.contract.form</field>
+        <field name="model">magestoretraining.contract</field>
+        <field name="arch" type="xml">
+            <form string="Current Contract">
+                <header>
+                    <field name="state" widget="statusbar" clickable="1"/>
+                </header>
+                <sheet>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name" placeholder="Contract Reference"/>
+                    </h1>
+                </div>
+                <group>
+                    <group string="Trainer">
+                        <field name="trainer_id"/>
+                    </group>
+                    <group string="Trainee">
+                        <field name="trainee_id"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Information" name="information">
+                        <group>
+                            <group>
+                                <field name="training_about" placeholder="Magento 2"/>
+                                <field name="training_content"/>
+                                <field name="training_form"/>
+                            </group>
+                            <group>
+                                <label for="date_start" string="Duration"/>
+                                <div>
+                                    <field name="date_start" class="oe_inline"/> - <field name="date_end" class="oe_inline"/>
+                                </div>
+                                <field name="working_hours"/>
+                                <field name="training_address"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Duty and Right">
+                        <group>
+                            <group string="Trainer">
+                                <field name="trainer_right"/>
+                                <field name="trainer_duty"/>
+                            </group>
+                            <group string="Trainee">
+                                <field name="trainee_right"/>
+                                <field name="trainee_duty"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Payment">
+                        <group col="4">
+                            <field name="training_fee"/>
+                            <field name="payment_method"/>
+                        </group>
+                    </page>
+                </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="trainee_contract_view_tree" model="ir.ui.view">
+        <field name="name">trainee.contract.tree</field>
+        <field name="model">magestoretraining.contract</field>
+        <field name="arch" type="xml">
+            <tree string="Contracts">
+                <!--<tree string="Contracts" decoration-bf="message_needaction == True">-->
+                <field name="name"/>
+                <field name="trainer_id"/>
+                <field name="trainee_id"/>
+                <field name="working_hours"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <!--<field name="message_needaction" invisible="1"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_trainee_contract" model="ir.actions.act_window">
+        <field name="name">Contracts</field>
+        <field name="res_model">magestoretraining.contract</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_current':1}</field>
+        <field name="search_view_id" ref="trainee_contract_view_search"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click here to create new contracts.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="trainee_menu_contract"
+        name="Contracts"
+        sequence="4"
+        action="action_trainee_contract"
+        parent="trainingcourse_menu"/>
+</odoo>
