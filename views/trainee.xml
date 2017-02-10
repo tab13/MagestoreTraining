@@ -5,7 +5,7 @@
             <field name="name">Trainees</field>
             <field name="res_model">magestoretraining.trainee</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
         </record>
 
         <record model="ir.ui.view" id="trainee_tree_view">
@@ -22,6 +22,44 @@
                     <field name="identity"/>
                     <field name="status"/>
                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="trainee_kanban_view">
+            <field name="name">trainee.kanban</field>
+            <field name="model">magestoretraining.trainee</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="mobile_phone"/>
+                    <field name="work_phone"/>
+                    <field name="birth_day"/>
+                    <field name="address"/>
+                    <field name="identity"/>
+                    <field name="status"/>
+                    <templates>
+                        <t t-name = "kanban-box">
+                            <div class = "oe_kanban_ card">
+                                <div class = "oe_kanban_content">
+                                    <span class ="" style="float:left">
+                                        <img t-att-src="kanban_image('magestoretraining.trainee', 'image', record.id.value)" width="100" height="80"/>
+                                    </span>
+                                    <span>
+                                        <strong>Name:<field name="name"/></strong>
+                                        <br/>
+                                        Work Email:<field name="email"/>
+                                        <br/>
+                                        Work Phone:<field name="work_phone"/>
+                                        <br/>
+                                        Birthday:<field name="birth_day"/>
+                                        <br/>
+                                    </span>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
             </field>
         </record>
 

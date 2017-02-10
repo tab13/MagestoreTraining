@@ -20,6 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
+    # any module necessary for this one to work correctly
     'depends': [
         'base',
         'mail',
@@ -31,15 +32,13 @@
         'module/module_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
-        # 'views/views.xml',
-        # 'views/templates.xml',
+        # 'views/Task.xml',
+        # 'views/mission.xml',
         'views/course.xml',
         'views/trainee.xml',
         'views/contract.xml',
         'views/mentor.xml',
         'views/review.xml',
-        'views/mission.xml',
-        'views/task.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -14,32 +14,32 @@
             <field name="category_id" ref="module_category_magestore_training"/>
         </record>
 
-        <record id="only_mentor_course_can_modify" model="ir.rule">
-            <field name="name">Only mentor can modify Course</field>
-            <field name="model_id" ref="model_magestoretraining_training"/>
-            <field name="groups" eval="[(4, ref('magestoretraining.group_mentor'))]"/>
-            <field name="domain_force">
-                [('mentor_id.employee_id.user_id','=',user.id)]
-            </field>
-            <field name="perm_read" eval="1"/>
-            <field name="perm_write" eval="1"/>
-            <field name="perm_create" eval="1"/>
-            <field name="perm_unlink" eval="1"/>
-        </record>
+        <!--<record id="only_mentor_course_can_modify" model="ir.rule">-->
+            <!--<field name="name">Only mentor can modify Course</field>-->
+            <!--<field name="model_id" ref="model_magestoretraining_training"/>-->
+            <!--<field name="groups" eval="[(4, ref('magestoretraining.group_mentor'))]"/>-->
+            <!--<field name="domain_force">-->
+                <!--&lt;!&ndash;[('mentor_id.employee_id.user_id','=',user.id)]&ndash;&gt;-->
+            <!--</field>-->
+            <!--<field name="perm_read" eval="1"/>-->
+            <!--<field name="perm_write" eval="1"/>-->
+            <!--<field name="perm_create" eval="1"/>-->
+            <!--<field name="perm_unlink" eval="1"/>-->
+        <!--</record>-->
 
-        <record model="ir.ui.view" id="course_form_view_domain">
-            <field name="model">magestoretraining.training</field>
-            <field name="inherit_id" ref="magestoretraining.course_form_view" />
-            <field name="groups_id" eval="[(6, 0, [ref('group_mentor')])]"/>
-            <field name="arch" type="xml">
-                <field name="trainee_id" position="attributes">
-                    <attribute name="readonly">True</attribute>
-                </field>
-                <field name="mentor_id" position="attributes">
-                    <attribute name="readonly">True</attribute>
-                </field>
-            </field>
-        </record>
+        <!--<record model="ir.ui.view" id="course_form_view_domain">-->
+            <!--<field name="model">magestoretraining.training</field>-->
+            <!--<field name="inherit_id" ref="magestoretraining.course_form_view" />-->
+            <!--<field name="groups_id" eval="[(6, 0, [ref('group_mentor')])]"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<field name="trainee_id" position="attributes">-->
+                    <!--<attribute name="readonly">True</attribute>-->
+                <!--</field>-->
+                <!--<field name="mentor_id" position="attributes">-->
+                    <!--<attribute name="readonly">True</attribute>-->
+                <!--</field>-->
+            <!--</field>-->
+        <!--</record>-->
 
     </data>
 </odoo>
