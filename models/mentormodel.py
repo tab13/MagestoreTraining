@@ -7,6 +7,7 @@ from odoo.exceptions import ValidationError
 
 
 class Mentor(models.Model):
+    
     _name = "magestoretraining.mentor"
     _order = 'name_related'
     _inherits = {'resource.resource': "resource_id"}
