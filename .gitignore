@@ -1,0 +1,7 @@
+.idea
+*.zip
+*.pyc
+.gitignore
+*.idea
+*.gitignore
+/.idea
